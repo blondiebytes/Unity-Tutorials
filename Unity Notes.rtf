@@ -61,11 +61,14 @@ Properties must be serialized to view them in the inspector\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \f0 \cf0 Organization:\
--We first create an empty game object say Asteroid (Reset & Set!)\
+- We first create an empty game object say Asteroid (Reset & Set!)\
 - Then we make all the art stuff it\'92s child (Reset!)\
 - Then add scripts, colliders, triggers to Asteroid game object\
 - When finish, make it a prefab.\
 - Then make a different game controller to do all the spawning\
+\
+Other Organization Tips:\
+-If  we can\'92t set it in the Inspector, then we shouldn\'92t see it in the inspector -> set it to private\
 \
 Coroutines:\
 -call them with StartCoroutine(name());\

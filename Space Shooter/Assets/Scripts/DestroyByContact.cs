@@ -6,9 +6,19 @@ public class DestroyByContact : MonoBehaviour
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
-	public GameController gameController;
+	private GameController gameController;
 
-	void OnTriggerEnter(Collider other) 
+	void Start() 
+	{
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent<GameController> ();
+		} else {
+			Debug.Log ("Cannot find 'GameController' script");
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Boundary") {
 			return;
@@ -18,9 +28,12 @@ public class DestroyByContact : MonoBehaviour
 
 		if (other.tag == "Player") {
 			Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
+			gameController.GameOver();
+		} else {
+			// because besides the boundary and the player, 
+			// the only other thing we can hit is the meteors
+			gameController.AddScore (scoreValue);
 		}
-
-		gameController.AddScore (scoreValue);
 
 		Destroy (other.gameObject);
 		Destroy (gameObject);
