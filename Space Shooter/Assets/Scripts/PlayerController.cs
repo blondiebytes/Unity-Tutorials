@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour {
 	private float nextFire;
 
 	private Rigidbody rb;
+	private AudioSource audio;
 	
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
+		audio = GetComponent<AudioSource> ();
 	}
 
 	// shooting lasers
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			/*GameObject clone =  because we don't need a reference*/
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			audio.Play();
 		}
 	}
 
