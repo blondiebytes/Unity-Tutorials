@@ -60,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// if h and v are nonzero, then we are walking
 		bool walking = h != 0f || v != 0f;
-		Debug.Log (walking);
 		anim.SetBool ("IsWalking", walking);
 
 
