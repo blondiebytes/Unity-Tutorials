@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
+	// so only shoot shootable things
     int shootableMask;
     ParticleSystem gunParticles;
     LineRenderer gunLine;
@@ -37,6 +38,7 @@ public class PlayerShooting : MonoBehaviour
             Shoot ();
         }
 
+		// If it's been awhile after we shot, disable the affects
         if(timer >= timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects ();
@@ -68,9 +70,12 @@ public class PlayerShooting : MonoBehaviour
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
 
+		// shootHit is what we hit with our ray here
+		// if we hit something, we go into the code
         if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
         {
             EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+			// check it because some shootable things don't have EnemyHealth scripts
             if(enemyHealth != null)
             {
                 enemyHealth.TakeDamage (damagePerShot, shootHit.point);

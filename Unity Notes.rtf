@@ -66,6 +66,7 @@ Properties must be serialized to view them in the inspector\
 - Then add scripts, colliders, triggers to Asteroid game object\
 - When finish, make it a prefab.\
 - Then make a different game controller to do all the spawning\
+- Best to set up references in Awake()\
 \
 Other Organization Tips:\
 -If  we can\'92t set it in the Inspector, then we shouldn\'92t see it in the inspector -> set it to private\
@@ -86,6 +87,14 @@ Different Spaces:\
 Baking & Agent for AI\
 -AI path finding; avoiding obstacles & going to the player
 \f1 \cf3 \
-\pard\pardeftab720
-\cf3 \
+\
+
+\f0 \cf0 Time.deltaTime == per second \'97> rather than per frame\
+\
+GameObject.setActive(bool) VS Component.enabled = bool\
+\
+Tips:\
+-animation override controller\
+-Create UI stuff in 2D mode
+\f1 \cf3 \
 }
